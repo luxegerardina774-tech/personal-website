@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>何宏祥 — AI 剪辑师</title>
+  <meta name="description" content="何宏祥个人网站 · 短视频剪辑师 · AI驱动创作">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Noto+Sans+SC:wght@100;200;300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 页面阅读进度条 -->
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════ NAV ══ -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-brand">HHX</a>
+    <div class="nav-links" id="nav-links">
+      <a href="#about"      class="nav-link">关于</a>
+      <a href="#skills"     class="nav-link">技能</a>
+      <a href="#ai"         class="nav-link">AI能力</a>
+      <a href="#experience" class="nav-link">经历</a>
+      <a href="#method"     class="nav-link">方法论</a>
+      <a href="#knowledge"  class="nav-link">知识体系</a>
+      <a href="#contact"    class="nav-link">联系</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="打开菜单" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════ HERO ══ -->
+  <section class="hero" id="hero">
+    <!-- 背景：建筑照片 + 几何SVG -->
+    <div class="hero-bg">
+      <img src="assets/hero-bg.webp" alt="" class="hero-bg-img" aria-hidden="true">
+      <svg class="hero-geo" viewBox="0 0 800 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon points="600,40  760,340 440,340" stroke="#1E4D8C" stroke-width="1"   fill="none" opacity="0.14"/>
+        <polygon points="650,120 790,420 510,420" stroke="#1E4D8C" stroke-width="0.6" fill="none" opacity="0.08"/>
+        <polygon points="680,200 790,550 570,550" stroke="#1E4D8C" stroke-width="0.5" fill="none" opacity="0.06"/>
+        <line x1="450" y1="0" x2="800" y2="700" stroke="#1E4D8C" stroke-width="0.5" opacity="0.07"/>
+        <line x1="550" y1="0" x2="150" y2="700" stroke="#1E4D8C" stroke-width="0.4" opacity="0.05"/>
+        <line x1="350" y1="0" x2="750" y2="700" stroke="#1E4D8C" stroke-width="0.3" opacity="0.04"/>
+      </svg>
+    </div>
+
+    <!-- 内容 -->
+    <div class="hero-content container">
+      <div class="hero-label reveal">AI EDITOR · SHORT VIDEO · 2026</div>
+      <h1 class="hero-name">
+        <span class="hero-name-en">HE HONGXIANG</span>
+        <span class="hero-name-zh reveal">何宏祥</span>
+      </h1>
+      <p class="hero-tagline reveal">AI 剪辑师 · 用理科逻辑做感性内容</p>
+      <p class="hero-sub reveal">自学清华 + 北大 AI 课程 · 作品覆盖率 90%+</p>
+      <p class="hero-pipeline reveal">选题 → 脚本 → 剪辑 → 复盘 · AI 全链路独立交付</p>
+      <div class="hero-actions reveal">
+        <a href="#experience" class="btn-primary">查看经历 →</a>
+        <a href="#contact"    class="btn-outline">联系我</a>
+      </div>
+    </div>
+
+    <!-- 滚动提示 -->
+    <div class="hero-scroll" aria-hidden="true">
+      <span>SCROLL</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ STATS ══ -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="90" data-suffix="%">0</div>
+          <div class="stat-label">AI 动画覆盖率</div>
+          <div class="stat-desc">全村家庭触达</div>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="400" data-suffix="+">0</div>
+          <div class="stat-label">活动触达人次</div>
+          <div class="stat-desc">科普活动累计</div>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="95" data-suffix="%">0</div>
+          <div class="stat-label">活动满意度</div>
+          <div class="stat-desc">参与者综合评价</div>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <div class="stat-number-wrap">
+            <span class="stat-number" data-target="4" data-suffix="">0</span><span class="stat-num-unit">项</span>
+          </div>
+          <div class="stat-label">AI 专项认证</div>
+          <div class="stat-desc">阿里云 · 讯飞</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ ABOUT ══ -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-label reveal">ABOUT</div>
+      <div class="about-grid">
+
+        <!-- 左：文字 -->
+        <div class="about-left">
+          <h2 class="section-title reveal">关于我</h2>
+          <p class="about-text reveal">我是何宏祥，20岁，地质专业，但我在做 AI 和剪辑。</p>
+          <p class="about-text reveal">不是因为专业不好，是因为我发现：AI + 内容，是这个时代效率最高的表达方式。</p>
+          <p class="about-text reveal">我自学完成清华大学 DeepSeek 全课程和北京大学提示词工程，把 AI 能力用在了真实创作中——我用 AI 制作的环保宣传动画，覆盖了家乡全村 90% 以上的家庭。</p>
+          <p class="about-text reveal">我用地质人的严谨分析爆款逻辑，用内容创作者的感知去剪辑每一帧。</p>
+        </div>
+
+        <!-- 右：信息格 -->
+        <div class="about-right">
+          <div class="info-grid">
+            <div class="info-card reveal">
+              <div class="info-label">年龄</div>
+              <div class="info-value">20 岁</div>
+            </div>
+            <div class="info-card reveal">
+              <div class="info-label">求职方向</div>
+              <div class="info-value">短视频剪辑<br>AI 内容创作</div>
+            </div>
+            <div class="info-card reveal">
+              <div class="info-label">自学课程</div>
+              <div class="info-value">清华 DeepSeek<br>北大提示词工程</div>
+            </div>
+            <div class="info-card reveal">
+              <div class="info-label">所在地</div>
+              <div class="info-value">杭州</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ SKILLS MARQUEE ══ -->
+  <section class="skills" id="skills">
+    <div class="skills-header container">
+      <div class="section-label reveal">CORE SKILLS</div>
+      <h2 class="section-title reveal">核心能力</h2>
+    </div>
+    <div class="marquee-wrapper">
+      <!-- 行1：向左 -->
+      <div class="marquee-row">
+        <div class="marquee-track marquee-left" aria-hidden="true">
+          <span>短视频剪辑</span><span class="dot">·</span>
+          <span>剪映</span><span class="dot">·</span>
+          <span>AI 视频生成</span><span class="dot">·</span>
+          <span>提示词工程</span><span class="dot">·</span>
+          <span>AI 动画制作</span><span class="dot">·</span>
+          <span>内容策划</span><span class="dot">·</span>
+          <span>脚本撰写</span><span class="dot">·</span>
+          <!-- 复制一遍实现无缝循环 -->
+          <span>短视频剪辑</span><span class="dot">·</span>
+          <span>剪映</span><span class="dot">·</span>
+          <span>AI 视频生成</span><span class="dot">·</span>
+          <span>提示词工程</span><span class="dot">·</span>
+          <span>AI 动画制作</span><span class="dot">·</span>
+          <span>内容策划</span><span class="dot">·</span>
+          <span>脚本撰写</span><span class="dot">·</span>
+        </div>
+      </div>
+      <!-- 行2：向右 -->
+      <div class="marquee-row">
+        <div class="marquee-track marquee-right" aria-hidden="true">
+          <span>DeepSeek</span><span class="dot">·</span>
+          <span>抖音平台理解</span><span class="dot">·</span>
+          <span>B站内容分析</span><span class="dot">·</span>
+          <span>数据量化思维</span><span class="dot">·</span>
+          <span>快速自学能力</span><span class="dot">·</span>
+          <span>团队协作</span><span class="dot">·</span>
+          <!-- 复制 -->
+          <span>DeepSeek</span><span class="dot">·</span>
+          <span>抖音平台理解</span><span class="dot">·</span>
+          <span>B站内容分析</span><span class="dot">·</span>
+          <span>数据量化思维</span><span class="dot">·</span>
+          <span>快速自学能力</span><span class="dot">·</span>
+          <span>团队协作</span><span class="dot">·</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ AI CAPABILITY ══ -->
+  <section class="ai-power section" id="ai">
+    <div class="container">
+      <div class="section-label reveal">AI CAPABILITY</div>
+      <h2 class="section-title reveal">AI 能力体系</h2>
+
+      <!-- Plan A：SVG 线框金字塔 -->
+      <div class="ai-pyramid-wrap reveal">
+        <svg class="ai-pyramid-svg" viewBox="0 0 1000 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="AI能力四层金字塔">
+
+          <!-- 层填充 -->
+          <polygon class="pyr-fill-1" points="86,310 914,310 990,400 10,400"/>
+          <polygon class="pyr-fill-2" points="162,220 838,220 914,310 86,310"/>
+          <polygon class="pyr-fill-3" points="246,120 754,120 838,220 162,220"/>
+          <polygon class="pyr-fill-4" points="330,20 670,20 754,120 246,120"/>
+
+          <!-- 外轮廓 -->
+          <polygon points="330,20 670,20 990,400 10,400" class="pyr-outline"/>
+
+          <!-- 水平分隔线 -->
+          <line x1="246" y1="120" x2="754" y2="120" class="pyr-divider"/>
+          <line x1="162" y1="220" x2="838" y2="220" class="pyr-divider"/>
+          <line x1="86"  y1="310" x2="914" y2="310" class="pyr-divider pyr-divider--faint"/>
+
+          <!-- 第四层（蓝底白字） -->
+          <text x="500" y="57"  text-anchor="middle" class="pyr-lv pyr-lv--light">第四层</text>
+          <text x="500" y="79"  text-anchor="middle" class="pyr-name pyr-name--light">AI 训练</text>
+          <text x="500" y="100" text-anchor="middle" class="pyr-desc pyr-desc--light">微调模型 · 高级认证 · 训练私人 AI</text>
+
+          <!-- 第三层 -->
+          <text x="500" y="153" text-anchor="middle" class="pyr-lv">第三层</text>
+          <text x="500" y="174" text-anchor="middle" class="pyr-name">AI 工具开发</text>
+          <text x="500" y="194" text-anchor="middle" class="pyr-desc">提示词工具 · 封面脚本 · 报告自动化</text>
+
+          <!-- 第二层 -->
+          <text x="500" y="246" text-anchor="middle" class="pyr-lv">第二层</text>
+          <text x="500" y="267" text-anchor="middle" class="pyr-name">AI 落地应用</text>
+          <text x="500" y="287" text-anchor="middle" class="pyr-desc">AI 动画 · 爆款拆解 · 剪辑全流程辅助</text>
+
+          <!-- 第一层（灰色） -->
+          <text x="500" y="334" text-anchor="middle" class="pyr-lv pyr-lv--muted">第一层</text>
+          <text x="500" y="355" text-anchor="middle" class="pyr-name pyr-name--muted">AI 使用</text>
+          <text x="500" y="375" text-anchor="middle" class="pyr-desc pyr-desc--muted">对话工具 · 基础提示词 ← 大多数求职者停在这里</text>
+
+          <!-- 「我在这里」指示线 -->
+          <line x1="716" y1="70" x2="800" y2="70" class="pyr-pointer-line"/>
+          <circle cx="714" cy="70" r="2.5" class="pyr-pointer-dot"/>
+          <text x="808" y="75" class="pyr-pointer-text">我在这里</text>
+
+        </svg>
+        <p class="ai-stack-quote reveal">「我不只会用 AI，我会训练它、改造它，让它为创作服务。」</p>
+      </div>
+
+      <!-- Plan B：工作流 -->
+      <div class="ai-workflow-wrap">
+        <div class="ai-workflow-title reveal">AI × 剪辑 · 全链路工作流</div>
+        <div class="ai-workflow">
+
+          <div class="ai-wf-step reveal">
+            <div class="ai-wf-num">01</div>
+            <div class="ai-wf-name">选题分析</div>
+            <div class="ai-wf-tag ai-wf-tag--ai">AI</div>
+          </div>
+          <div class="ai-wf-arrow" aria-hidden="true">→</div>
+
+          <div class="ai-wf-step reveal">
+            <div class="ai-wf-num">02</div>
+            <div class="ai-wf-name">脚本撰写</div>
+            <div class="ai-wf-tag ai-wf-tag--ai">AI</div>
+          </div>
+          <div class="ai-wf-arrow" aria-hidden="true">→</div>
+
+          <div class="ai-wf-step reveal">
+            <div class="ai-wf-num">03</div>
+            <div class="ai-wf-name">素材剪辑</div>
+            <div class="ai-wf-tag ai-wf-tag--tool">剪映</div>
+          </div>
+          <div class="ai-wf-arrow" aria-hidden="true">→</div>
+
+          <div class="ai-wf-step reveal">
+            <div class="ai-wf-num">04</div>
+            <div class="ai-wf-name">字幕生成</div>
+            <div class="ai-wf-tag ai-wf-tag--ai">AI</div>
+          </div>
+          <div class="ai-wf-arrow" aria-hidden="true">→</div>
+
+          <div class="ai-wf-step reveal">
+            <div class="ai-wf-num">05</div>
+            <div class="ai-wf-name">封面制作</div>
+            <div class="ai-wf-tag ai-wf-tag--ai">AI</div>
+          </div>
+          <div class="ai-wf-arrow" aria-hidden="true">→</div>
+
+          <div class="ai-wf-step reveal">
+            <div class="ai-wf-num">06</div>
+            <div class="ai-wf-name">数据复盘</div>
+            <div class="ai-wf-tag ai-wf-tag--ai">AI</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ EXPERIENCE ══ -->
+  <section class="experience section" id="experience">
+    <div class="container">
+      <div class="section-label reveal">EXPERIENCE</div>
+      <h2 class="section-title reveal">项目经历</h2>
+      <div class="exp-grid">
+
+        <div class="exp-card reveal">
+          <div class="exp-number">01</div>
+          <h3 class="exp-title">AI 创作 · 落地案例</h3>
+          <p class="exp-desc">担任环保宣讲志愿者期间，面对传统宣传触达率低的痛点，主动引入 AI 技术独立制作宣传动画。最终覆盖全村 <strong>90%+</strong> 家庭，获带队老师高度认可。</p>
+          <div class="exp-tags">
+            <span class="tag">AI 动画</span>
+            <span class="tag">内容创作</span>
+            <span class="tag">覆盖率 90%+</span>
+          </div>
+        </div>
+
+        <div class="exp-card reveal">
+          <div class="exp-number">02</div>
+          <h3 class="exp-title">内容策划 · 全流程执行</h3>
+          <p class="exp-desc">主导策划多场大型科普活动，独立负责方案设计、合作洽谈、现场统筹全流程。累计触达 <strong>400+ 名</strong>师生，活动满意度 <strong>95%</strong>。</p>
+          <div class="exp-tags">
+            <span class="tag">活动策划</span>
+            <span class="tag">400+ 参与</span>
+            <span class="tag">满意度 95%</span>
+          </div>
+        </div>
+
+        <div class="exp-card reveal">
+          <div class="exp-number">03</div>
+          <h3 class="exp-title">持续自学 · 系统成长</h3>
+          <p class="exp-desc">系统自学完成<strong>清华大学 DeepSeek 入门到精通</strong>和<strong>北京大学提示词工程与落地场景</strong>两门课程，将 AI 能力直接应用于内容创作实践。</p>
+          <div class="exp-tags">
+            <span class="tag">清华 DeepSeek</span>
+            <span class="tag">北大提示词</span>
+            <span class="tag">AI 实战</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ CREDENTIALS ══ -->
+  <section class="certs section" id="certs">
+    <div class="container">
+      <div class="section-label reveal">CREDENTIALS</div>
+      <h2 class="section-title reveal">证书认证</h2>
+
+      <!-- 主证书：人工智能训练师（高级） -->
+      <a href="#" class="cert-featured reveal cert-link" data-src="assets/cert-ai-trainer.jpg" aria-label="查看人工智能训练师证书原图">
+        <img src="assets/cert-ai-trainer.jpg" alt="人工智能训练师（高级）证书" class="cert-featured-img">
+        <div class="cert-featured-info">
+          <span class="cert-level">ADVANCED</span>
+          <h3 class="cert-featured-title">人工智能训练师证书</h3>
+          <p class="cert-featured-org">阿里云达摩院 · 机器智能技术事业部</p>
+          <p class="cert-featured-date">颁证日期：2025 年 9 月 4 日 &nbsp;·&nbsp; 有效至 2026 年 9 月 4 日</p>
+          <p class="cert-featured-hint">点击查看原图 →</p>
+        </div>
+      </a>
+
+      <!-- 三张讯飞证书 -->
+      <div class="cert-grid">
+        <a href="#" class="cert-thumb reveal cert-link" data-src="assets/cert-1.png">
+          <img src="assets/cert-1.png" alt="智能体工程师认证">
+          <div class="cert-thumb-label">智能体工程师认证</div>
+          <div class="cert-thumb-org">讯飞 AI 大学堂</div>
+        </a>
+        <a href="#" class="cert-thumb reveal cert-link" data-src="assets/cert-2.png">
+          <img src="assets/cert-2.png" alt="Prompt工程师认证">
+          <div class="cert-thumb-label">Prompt 工程师认证</div>
+          <div class="cert-thumb-org">讯飞 AI 大学堂</div>
+        </a>
+        <a href="#" class="cert-thumb reveal cert-link" data-src="assets/cert-3.png">
+          <img src="assets/cert-3.png" alt="微调工程师认证">
+          <div class="cert-thumb-label">微调工程师认证</div>
+          <div class="cert-thumb-org">讯飞 AI 大学堂</div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ METHODOLOGY ══ -->
+  <section class="method section" id="method">
+    <div class="container">
+      <div class="section-label reveal">METHODOLOGY</div>
+      <h2 class="section-title reveal">我的剪辑框架</h2>
+      <p class="method-intro reveal">每条商业短视频，我用同一套逻辑拆解与重构。</p>
+
+      <div class="method-steps">
+
+        <div class="method-step reveal">
+          <div class="method-step-header">
+            <span class="method-step-num">01</span>
+            <span class="method-badge method-badge--hook">HOOK</span>
+          </div>
+          <h3 class="method-step-title">钩子 · 0~3 秒</h3>
+          <p class="method-step-desc">用户决定刷走还是留下的窗口。我分析同类爆款前3秒的共性模式：<strong>悬念句式、强冲突画面、直击痛点</strong>——先让算法推，再让用户停。</p>
+          <ul class="method-list">
+            <li>拆解竞品前3秒结构</li>
+            <li>匹配品牌调性选钩型</li>
+            <li>封面与开头协同设计</li>
+          </ul>
+        </div>
+
+        <div class="method-connector" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M4 16h24M22 9l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="method-step reveal">
+          <div class="method-step-header">
+            <span class="method-step-num">02</span>
+            <span class="method-badge method-badge--value">VALUE</span>
+          </div>
+          <h3 class="method-step-title">价值 · 4~30 秒</h3>
+          <p class="method-step-desc">留住用户后是信息密度与情绪节奏的博弈。我用<strong>音乐节拍对齐剪辑点</strong>，数据 / 场景 / 情感三条线交织，让每一帧都有前进感。</p>
+          <ul class="method-list">
+            <li>信息分层，关键词打点</li>
+            <li>音轨节拍与切点对齐</li>
+            <li>完播率优先，不做冗余</li>
+          </ul>
+        </div>
+
+        <div class="method-connector" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M4 16h24M22 9l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="method-step reveal">
+          <div class="method-step-header">
+            <span class="method-step-num">03</span>
+            <span class="method-badge method-badge--cta">CTA</span>
+          </div>
+          <h3 class="method-step-title">转化 · 最后 5 秒</h3>
+          <p class="method-step-desc">转化不是口号，是心理学。我在视频情绪高点植入行动指令，配合品牌落点，完成从<strong>内容到商业的闭环</strong>。</p>
+          <ul class="method-list">
+            <li>情绪高点植入品牌锤</li>
+            <li>场景收尾 → 行动指令</li>
+            <li>评论区引导二次传播</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="method-callout reveal">
+        <div class="method-callout-icon">›</div>
+        <p>每次接单前，我先做竞品爆款拆解，再按品牌调性调整三段权重——不是套模版，是用框架思考。</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ KNOWLEDGE SYSTEM ══ -->
+  <section class="knowledge section" id="knowledge">
+    <div class="container">
+      <div class="section-label reveal">KNOWLEDGE SYSTEM</div>
+      <h2 class="section-title reveal">知识体系</h2>
+      <p class="knowledge-intro reveal">我用 AI 把碎片化阅读自动转化为系统化知识——全程自动化，不是手动整理。</p>
+
+      <!-- A：自动化 Pipeline -->
+      <div class="kn-pipeline reveal">
+        <div class="kn-pipe-step">
+          <div class="kn-pipe-num">01</div>
+          <div class="kn-pipe-title">筛选信息源</div>
+          <div class="kn-pipe-desc">只追踪 AI 领域<br>一手信息大佬<br>过滤 90% 噪音</div>
+        </div>
+        <div class="kn-pipe-arrow" aria-hidden="true">→</div>
+        <div class="kn-pipe-step">
+          <div class="kn-pipe-num">02</div>
+          <div class="kn-pipe-title">AI 自动提炼</div>
+          <div class="kn-pipe-desc">萃取核心观点<br>自动打标签<br>去除冗余信息</div>
+        </div>
+        <div class="kn-pipe-arrow" aria-hidden="true">→</div>
+        <div class="kn-pipe-step">
+          <div class="kn-pipe-num">03</div>
+          <div class="kn-pipe-title">写入 Vault</div>
+          <div class="kn-pipe-desc">原子笔记格式<br>frontmatter 规范<br>自动分类归档</div>
+        </div>
+        <div class="kn-pipe-arrow" aria-hidden="true">→</div>
+        <div class="kn-pipe-step kn-pipe-step--accent">
+          <div class="kn-pipe-num">04</div>
+          <div class="kn-pipe-title">知识图谱生长</div>
+          <div class="kn-pipe-desc">节点自动关联<br>持续迭代更新<br>随时调用输出</div>
+        </div>
+      </div>
+
+      <!-- 信息源：大佬卡片 -->
+      <div class="kn-sources-header reveal">
+        <span class="kn-sources-label">MY SOURCES</span>
+        <p>我的 AI 信息源 · 点击跳转主页</p>
+      </div>
+      <div class="kn-sources-grid">
+        <a href="https://baoyu.io/" class="kn-source-card reveal" target="_blank" rel="noopener">
+          <div class="kn-source-avatar">宝</div>
+          <div class="kn-source-name">宝玉 xp</div>
+          <div class="kn-source-desc">Prompt 工程师 · 专注 LLM 精品翻译与 AI 实践，X 43K+ 粉丝</div>
+          <div class="kn-source-platform">X · 博客</div>
+          <div class="kn-source-arrow">↗</div>
+        </a>
+        <a href="https://www.guizang.ai/" class="kn-source-card reveal" target="_blank" rel="noopener">
+          <div class="kn-source-avatar">藏</div>
+          <div class="kn-source-name">歸藏</div>
+          <div class="kn-source-desc">AIGC 周刊主理人 · 每周 AI 产品与工具精选，微博 26W+ 粉丝</div>
+          <div class="kn-source-platform">个人网站</div>
+          <div class="kn-source-arrow">↗</div>
+        </a>
+        <a href="https://space.bilibili.com/12566101" class="kn-source-card reveal" target="_blank" rel="noopener">
+          <div class="kn-source-avatar">叶</div>
+          <div class="kn-source-name">秋葉 aaaki</div>
+          <div class="kn-source-desc">SD / ComfyUI 整合包作者 · 降低 AI 绘画门槛的"赛博菩萨"</div>
+          <div class="kn-source-platform">B 站</div>
+          <div class="kn-source-arrow">↗</div>
+        </a>
+        <a href="https://space.bilibili.com/1567748478/" class="kn-source-card reveal" target="_blank" rel="noopener">
+          <div class="kn-source-avatar">沐</div>
+          <div class="kn-source-name">跟李沐学 AI</div>
+          <div class="kn-source-desc">深度学习论文精读 · 前亚马逊科学家，B 站 80W+ 粉丝</div>
+          <div class="kn-source-platform">B 站</div>
+          <div class="kn-source-arrow">↗</div>
+        </a>
+      </div>
+
+      <!-- C：知识图谱 SVG 可视化 -->
+      <div class="kn-graph-wrap reveal">
+        <div class="kn-graph-label">OBSIDIAN · KNOWLEDGE GRAPH</div>
+        <svg class="kn-graph-svg" viewBox="0 0 800 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="知识图谱可视化">
+          <!-- 连接线 -->
+          <line x1="400" y1="160" x2="160" y2="80"  class="kg-line"/>
+          <line x1="400" y1="160" x2="640" y2="80"  class="kg-line"/>
+          <line x1="400" y1="160" x2="120" y2="200" class="kg-line"/>
+          <line x1="400" y1="160" x2="680" y2="200" class="kg-line"/>
+          <line x1="400" y1="160" x2="220" y2="270" class="kg-line"/>
+          <line x1="400" y1="160" x2="580" y2="270" class="kg-line"/>
+          <line x1="400" y1="160" x2="400" y2="50"  class="kg-line"/>
+          <line x1="160" y1="80"  x2="120" y2="200" class="kg-line kg-line--faint"/>
+          <line x1="640" y1="80"  x2="680" y2="200" class="kg-line kg-line--faint"/>
+          <line x1="220" y1="270" x2="120" y2="200" class="kg-line kg-line--faint"/>
+          <line x1="580" y1="270" x2="680" y2="200" class="kg-line kg-line--faint"/>
+
+          <!-- 外围节点 -->
+          <circle cx="160" cy="80"  r="5" class="kg-node"/>
+          <circle cx="640" cy="80"  r="5" class="kg-node"/>
+          <circle cx="120" cy="200" r="4" class="kg-node kg-node--sm"/>
+          <circle cx="680" cy="200" r="4" class="kg-node kg-node--sm"/>
+          <circle cx="220" cy="270" r="4" class="kg-node kg-node--sm"/>
+          <circle cx="580" cy="270" r="4" class="kg-node kg-node--sm"/>
+          <circle cx="400" cy="50"  r="4" class="kg-node kg-node--sm"/>
+
+          <!-- 中心节点 -->
+          <circle cx="400" cy="160" r="14" class="kg-node-center"/>
+          <circle cx="400" cy="160" r="8"  class="kg-node-center-inner"/>
+
+          <!-- 节点标签 -->
+          <text x="160" y="66"  text-anchor="middle" class="kg-label">AI 训练</text>
+          <text x="640" y="66"  text-anchor="middle" class="kg-label">提示词工程</text>
+          <text x="96"  y="213" text-anchor="middle" class="kg-label kg-label--sm">选题方法</text>
+          <text x="710" y="213" text-anchor="middle" class="kg-label kg-label--sm">数据复盘</text>
+          <text x="220" y="286" text-anchor="middle" class="kg-label kg-label--sm">脚本公式</text>
+          <text x="580" y="286" text-anchor="middle" class="kg-label kg-label--sm">剪辑流程</text>
+          <text x="400" y="38"  text-anchor="middle" class="kg-label kg-label--sm">DeepSeek</text>
+          <text x="400" y="184" text-anchor="middle" class="kg-label kg-label--center">知识库</text>
+        </svg>
+        <p class="kn-graph-caption">26 张原子笔记 · AI 自动生成与维护 · 持续生长中</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ WHY ME ══ -->
+  <section class="why-me section" id="why">
+    <div class="container">
+      <div class="section-label reveal">WHY ME</div>
+      <h2 class="section-title reveal">为什么是我</h2>
+      <div class="why-table reveal">
+        <div class="why-table-header">
+          <div class="why-col why-col--label"></div>
+          <div class="why-col why-col--other">普通剪辑师</div>
+          <div class="why-col why-col--me">AI 剪辑师（我）</div>
+        </div>
+        <div class="why-table-row">
+          <div class="why-col why-col--label">选题方式</div>
+          <div class="why-col why-col--other">凭感觉</div>
+          <div class="why-col why-col--me">数据 + AI 分析</div>
+        </div>
+        <div class="why-table-row">
+          <div class="why-col why-col--label">脚本产出</div>
+          <div class="why-col why-col--other">手写 1~2h</div>
+          <div class="why-col why-col--me">AI 结构化 30min</div>
+        </div>
+        <div class="why-table-row">
+          <div class="why-col why-col--label">工具链</div>
+          <div class="why-col why-col--other">剪映基础功能</div>
+          <div class="why-col why-col--me">剪映 + AI 全链路</div>
+        </div>
+        <div class="why-table-row">
+          <div class="why-col why-col--label">行业认证</div>
+          <div class="why-col why-col--other">—</div>
+          <div class="why-col why-col--me">4 张 AI 专项认证</div>
+        </div>
+        <div class="why-table-row">
+          <div class="why-col why-col--label">自学体系</div>
+          <div class="why-col why-col--other">—</div>
+          <div class="why-col why-col--me">Obsidian 知识库持续迭代</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ CONTACT ══ -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-label reveal">CONTACT</div>
+      <h2 class="contact-title reveal">LET'S CONNECT</h2>
+      <p class="contact-sub reveal">期待短视频剪辑 / AI 内容相关的工作机会</p>
+      <div class="contact-info">
+        <div class="contact-item reveal">
+          <div class="contact-label">微信</div>
+          <div class="contact-value wechat-copy" id="wechat-num" data-wechat="15758776675" title="点击复制微信号" role="button" tabindex="0">15758776675</div>
+        </div>
+        <div class="contact-divider" aria-hidden="true"></div>
+        <div class="contact-item reveal">
+          <div class="contact-label">邮箱</div>
+          <div class="contact-value">3350314935@qq.com</div>
+        </div>
+      </div>
+      <a href="assets/何宏祥的简历.pdf" download="何宏祥的简历.pdf" class="btn-download reveal">
+        下载简历 ↓
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ FOOTER ══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-name">何宏祥</span>
+          <span class="footer-role">AI 剪辑师 · 短视频创作者</span>
+        </div>
+        <p class="footer-cta">期待合作，随时联系 →</p>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-contacts">
+          <span class="footer-contact-item">WeChat · 15758776675</span>
+          <span class="footer-sep">·</span>
+          <span class="footer-contact-item">3350314935@qq.com</span>
+        </div>
+        <div class="footer-right">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <polygon points="7,1 13,13 1,13" stroke="#1E4D8C" stroke-width="0.8" fill="none" opacity="0.35"/>
+          </svg>
+          <span class="footer-year">© 2026</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="证书大图" hidden>
+    <button class="lightbox-close" id="lightbox-close" aria-label="关闭">✕</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- 回到顶部 -->
+  <button class="back-to-top" id="back-to-top" aria-label="回到顶部" hidden>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M8 13V3M3 8l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="main.js"></script>
+  <script src="character.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+.claude/
+DESIGN.md
+进度记录.md
+*.log
+.DS_Store
+Thumbs.db
