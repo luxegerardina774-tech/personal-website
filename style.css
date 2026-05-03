@@ -1443,6 +1443,8 @@ a { color: inherit; }
 /* ============================================================
    动漫角色 · Hero 区右侧
    ============================================================ */
+
+
 .hero-char-wrap {
   position: absolute;
   right: 6%;
@@ -1756,4 +1758,492 @@ a { color: inherit; }
 @media (max-width: 600px) {
   .footer-top    { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+}
+
+/* ============================================================
+   全站视觉系统 v2
+   方案 A：深色交替（Skills / Experience / Methodology → 深）
+   方案 C：超大装饰字 + 全幅对角线
+   ============================================================ */
+
+/* ── Section 公共：内容层在装饰层之上 ── */
+.about, .skills, .ai-power, .experience,
+.certs, .method, .knowledge, .why-me {
+  position: relative;
+  overflow: hidden;
+}
+.about .container,
+.ai-power .container,
+.experience .container,
+.certs .container,
+.method .container,
+.knowledge .container,
+.why-me .container { position: relative; z-index: 1; }
+.skills .skills-header,
+.skills .marquee-wrapper { position: relative; z-index: 1; }
+
+/* ── 超大装饰字 ::before 公共 ── */
+.about::before, .skills::before, .ai-power::before,
+.experience::before, .certs::before, .method::before,
+.knowledge::before, .why-me::before {
+  position: absolute;
+  font-family: var(--font-en);
+  font-weight: 800;
+  font-size: clamp(8rem, 23vw, 28rem);
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+  pointer-events: none;
+  z-index: 0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* 各 section 的装饰字内容 + 位置 */
+.about::before      { content: 'ABOUT';  bottom: -2rem; right: -1.5rem;  color: rgba(var(--color-accent-rgb), 0.07); }
+.skills::before     { content: 'SKILL';  top: -2rem;    right: -1.5rem;  color: rgba(255,255,255,0.042); }
+.ai-power::before   { content: 'A·I';   bottom: -2rem; left:  -0.5rem;  color: rgba(var(--color-accent-rgb), 0.065); }
+.experience::before { content: 'EDIT';   top: -2rem;    right: -1.5rem;  color: rgba(255,255,255,0.038); }
+.certs::before      { content: 'CERT';   bottom: -2rem; right: -1.5rem;  color: rgba(var(--color-accent-rgb), 0.07); }
+.method::before     { content: 'METHOD'; top: -3rem;    left:  -1.5rem;  color: rgba(255,255,255,0.032);
+                      font-size: clamp(5rem, 16vw, 19rem); }
+.knowledge::before  { content: 'KNOW';   bottom: -2rem; right: -1.5rem;  color: rgba(var(--color-accent-rgb), 0.07); }
+.why-me::before     { content: 'WHY';    top: -2rem;    right: -1rem;    color: rgba(var(--color-accent-rgb), 0.065); }
+
+/* ── 全幅对角线 ::after（About / Experience / Knowledge）── */
+.about::after, .experience::after, .knowledge::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.about::after {
+  background:
+    linear-gradient(135deg, transparent 54%,
+      rgba(var(--color-accent-rgb),.05) 54%, rgba(var(--color-accent-rgb),.05) 54.6%, transparent 54.6%),
+    linear-gradient(135deg, transparent 63%,
+      rgba(var(--color-accent-rgb),.03) 63%, rgba(var(--color-accent-rgb),.03) 63.5%, transparent 63.5%);
+}
+.experience::after {
+  background:
+    linear-gradient(-135deg, transparent 54%,
+      rgba(255,255,255,.04) 54%, rgba(255,255,255,.04) 54.6%, transparent 54.6%),
+    linear-gradient(-135deg, transparent 63%,
+      rgba(255,255,255,.024) 63%, rgba(255,255,255,.024) 63.5%, transparent 63.5%);
+}
+.knowledge::after {
+  background:
+    linear-gradient(135deg, transparent 48%,
+      rgba(var(--color-accent-rgb),.045) 48%, rgba(var(--color-accent-rgb),.045) 48.6%, transparent 48.6%);
+}
+
+/* ════════════════════════════════════
+   方案 A：深色 sections
+   ════════════════════════════════════ */
+.skills, .experience, .method {
+  background: #0B1220;
+  --color-accent:       #4A7FC1;
+  --color-accent-rgb:   74, 127, 193;
+  --color-accent-light: #7AAEE0;
+  --color-accent-pale:  rgba(74,127,193,0.15);
+}
+.skills .section-label,
+.experience .section-label,
+.method .section-label { color: var(--color-accent); }
+.skills .section-title,
+.experience .section-title,
+.method .section-title { color: rgba(244,244,242,0.92); }
+
+/* Skills 深色 */
+.skills {
+  background-image: repeating-linear-gradient(
+    0deg, rgba(255,255,255,.022) 0, rgba(255,255,255,.022) 1px,
+    transparent 1px, transparent 30px);
+}
+.skills .marquee-track       { color: rgba(244,244,242,0.42); }
+.skills .marquee-track .dot  { color: var(--color-accent); }
+
+/* Experience 深色 */
+.experience {
+  background-image: repeating-linear-gradient(
+    -45deg, rgba(255,255,255,.018) 0, rgba(255,255,255,.018) 1px,
+    transparent 1px, transparent 24px);
+}
+.experience .exp-card {
+  background: rgba(255,255,255,0.038);
+  border-color: rgba(255,255,255,0.07);
+}
+.experience .exp-card:hover {
+  background: rgba(255,255,255,0.062);
+  border-color: rgba(var(--color-accent-rgb),0.4);
+  box-shadow: 0 8px 32px rgba(var(--color-accent-rgb),0.15);
+}
+.experience .exp-number               { color: var(--color-accent); }
+.experience .exp-title                { color: rgba(244,244,242,0.9); }
+.experience .exp-desc                 { color: rgba(244,244,242,0.5); }
+.experience .exp-desc strong          { color: var(--color-accent-light); }
+.experience .tag                      { background: rgba(var(--color-accent-rgb),.15); color: var(--color-accent-light); border-color: rgba(var(--color-accent-rgb),.28); }
+.experience .tag:hover                { background: var(--color-accent); color: #fff; }
+
+/* Methodology 深色 */
+.method {
+  background-image:
+    repeating-linear-gradient(45deg,  rgba(255,255,255,.016) 0, rgba(255,255,255,.016) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.010) 0, rgba(255,255,255,.010) 1px, transparent 1px, transparent 32px);
+}
+.method .method-intro                 { color: rgba(244,244,242,0.42); }
+.method .method-step                  { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.065); }
+.method .method-step:hover            { border-color: rgba(var(--color-accent-rgb),.35); background: rgba(255,255,255,0.055); box-shadow: 0 8px 32px rgba(var(--color-accent-rgb),.1); }
+.method .method-step-title            { color: rgba(244,244,242,0.88); }
+.method .method-step-desc             { color: rgba(244,244,242,0.48); }
+.method .method-step-desc strong      { color: var(--color-accent-light); }
+.method .method-list li               { color: rgba(244,244,242,0.36); }
+.method .method-connector             { color: rgba(255,255,255,0.16); }
+.method .method-callout               { background: rgba(var(--color-accent-rgb),.1); border-left-color: var(--color-accent); }
+.method .method-callout p             { color: rgba(244,244,242,0.58); }
+.method .method-badge--hook           { color: var(--color-accent-light); background: rgba(var(--color-accent-rgb),.15); border-color: rgba(var(--color-accent-rgb),.3); }
+.method .method-badge--value          { color: #a0c8f0; background: rgba(74,127,193,.12); border-color: rgba(74,127,193,.25); }
+
+/* ════════════════════════════════════
+   全站照片背景系统
+   ════════════════════════════════════ */
+
+/* 浅色 sections — 照片 + 浅色遮罩 */
+.about {
+  background:
+    linear-gradient(rgba(244,244,242,0.87), rgba(244,244,242,0.87)),
+    url('assets/sec-about.jpg') center/cover no-repeat;
+}
+.ai-power {
+  background:
+    linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)),
+    url('assets/sec-ai.jpg') center/cover no-repeat;
+}
+.certs {
+  background:
+    linear-gradient(rgba(236,234,231,0.86), rgba(236,234,231,0.86)),
+    url('assets/sec-certs.jpg') center/cover no-repeat;
+}
+.knowledge {
+  background:
+    linear-gradient(rgba(236,234,231,0.85), rgba(236,234,231,0.85)),
+    url('assets/sec-knowledge.jpg') center/cover no-repeat;
+}
+.why-me {
+  background:
+    linear-gradient(rgba(236,234,231,0.87), rgba(236,234,231,0.87)),
+    url('assets/sec-why.jpg') center/cover no-repeat;
+}
+
+/* 深色 sections — 照片 + 深色遮罩 */
+.skills {
+  background:
+    linear-gradient(rgba(11,18,32,0.80), rgba(11,18,32,0.80)),
+    url('assets/sec-skills.jpg') center/cover no-repeat;
+}
+.experience {
+  background:
+    linear-gradient(rgba(11,18,32,0.78), rgba(11,18,32,0.78)),
+    url('assets/sec-experience.jpg') center/cover no-repeat;
+}
+.method {
+  background:
+    linear-gradient(rgba(11,18,32,0.80), rgba(11,18,32,0.80)),
+    url('assets/sec-method.jpg') center/cover no-repeat;
+}
+
+/* ============================================================
+   HERO DARK THEME
+   深色 Hero：强视觉冲击 → Stats（深）→ About（浅）高对比翻转
+   ============================================================ */
+
+.hero {
+  background: #0B1220;
+  /* 在 hero 范围内把 accent 换成更亮的蓝，深色背景上才可见 */
+  --color-accent:      #4A7FC1;
+  --color-accent-rgb:  74, 127, 193;
+  --color-accent-light:#7AAEE0;
+  --color-accent-pale: rgba(74, 127, 193, 0.15);
+}
+
+/* 建筑背景图：深色背景下稍微透出轮廓 */
+.hero .hero-bg-img {
+  opacity: 0.13;
+  filter: grayscale(40%);
+}
+
+/* 几何 SVG：CSS 覆盖 SVG 呈现属性，深色背景上加强可见度 */
+.hero-geo polygon { opacity: 0.42; }
+.hero-geo line    { opacity: 0.22; }
+
+/* 聚光灯加强 */
+.hero::after {
+  background: radial-gradient(
+    900px circle at var(--mx) var(--my),
+    rgba(74, 127, 193, 0.13),
+    transparent 60%
+  );
+}
+
+/* ── Nav 在深色 Hero 上 ── */
+.nav:not(.scrolled) .nav-brand          { color: rgba(244,244,242,0.88); }
+.nav:not(.scrolled) .nav-link           { color: rgba(244,244,242,0.38); }
+.nav:not(.scrolled) .nav-link:hover     { color: rgba(244,244,242,0.88); }
+.nav:not(.scrolled) .nav-link.active    { color: var(--color-accent-light); }
+.nav:not(.scrolled) .nav-hamburger span { background: rgba(244,244,242,0.72); }
+
+/* ── Hero 文字颜色 ── */
+.hero-name-en { color: rgba(244,244,242,0.96); }
+.hero-name-zh { color: rgba(244,244,242,0.36); }
+.hero-tagline { color: rgba(244,244,242,0.70); }
+.hero-sub     { color: rgba(244,244,242,0.36); }
+
+/* 滚动提示 */
+.hero-scroll      { color: rgba(244,244,242,0.22); }
+.hero-scroll-line { background: rgba(244,244,242,0.12); }
+
+/* ── 按钮适配深色 ── */
+.hero .btn-primary {
+  background: rgba(244,244,242,0.96);
+  color: #0B1220;
+  border-color: rgba(244,244,242,0.96);
+}
+.hero .btn-primary:hover {
+  background: var(--color-accent-light);
+  border-color: var(--color-accent-light);
+  color: #fff;
+}
+.hero .btn-outline {
+  color: rgba(244,244,242,0.72);
+  border-color: rgba(244,244,242,0.22);
+}
+.hero .btn-outline:hover {
+  border-color: var(--color-accent-light);
+  color: var(--color-accent-light);
+}
+
+/* ============================================================
+   全站深色系统重写 — DARK MODE OVERHAUL v1
+   调色板：Brittany Chiang 风格 × 何宏祥品牌
+   Base #080E1A · Surface #0F172A · Accent #38BDF8 · Text #F1F5F9
+   ============================================================ */
+
+/* ── 1. 全局 CSS 变量覆盖 ── */
+:root {
+  --color-bg:            #080E1A;
+  --color-bg-rgb:        8, 14, 26;
+  --color-surface:       #0F172A;
+  --color-bg-subtle:     #0D1525;
+
+  --color-text-primary:  #F1F5F9;
+  --color-text-rgb:      241, 245, 249;
+  --color-text-secondary:#94A3B8;
+  --color-text-muted:    #475569;
+
+  --color-accent:        #38BDF8;
+  --color-accent-rgb:    56, 189, 248;
+  --color-accent-light:  #7DD3FC;
+  --color-accent-pale:   rgba(56, 189, 248, 0.12);
+
+  --color-line:          rgba(255,255,255,0.08);
+  --color-line-strong:   rgba(255,255,255,0.15);
+
+  --shadow-md:           0 4px 12px rgba(0,0,0,0.35);
+  --shadow-accent:       0 8px 24px rgba(56,189,248,0.18);
+}
+
+/* ── 2. Stats 修复（原用 var(--color-text-primary) 作深色背景） ── */
+.stats {
+  background: #050A14;
+  border-top-color: rgba(255,255,255,0.06);
+}
+.stat-number { color: #F1F5F9; }
+.stat-label  { color: rgba(241,245,249,0.45); }
+.stat-unit   { color: rgba(241,245,249,0.45); }
+.stat-divider { border-color: rgba(255,255,255,0.07); }
+
+/* ── 3. 浅色 sections → 深色照片遮罩（让照片纹理更明显）── */
+.about {
+  background:
+    linear-gradient(rgba(8,14,26,0.72), rgba(8,14,26,0.72)),
+    url('assets/sec-about.jpg') center/cover no-repeat;
+}
+.ai-power {
+  background:
+    linear-gradient(rgba(8,14,26,0.72), rgba(8,14,26,0.72)),
+    url('assets/sec-ai.jpg') center/cover no-repeat;
+}
+.certs {
+  background:
+    linear-gradient(rgba(8,14,26,0.74), rgba(8,14,26,0.74)),
+    url('assets/sec-certs.jpg') center/cover no-repeat;
+}
+.knowledge {
+  background:
+    linear-gradient(rgba(8,14,26,0.72), rgba(8,14,26,0.72)),
+    url('assets/sec-knowledge.jpg') center/cover no-repeat;
+}
+.why-me {
+  background:
+    linear-gradient(rgba(8,14,26,0.72), rgba(8,14,26,0.72)),
+    url('assets/sec-why.jpg') center/cover no-repeat;
+}
+
+/* ── 4. 深色 sections — 升级 accent 为电光蓝 ── */
+.skills, .experience, .method {
+  --color-accent:       #38BDF8;
+  --color-accent-rgb:   56, 189, 248;
+  --color-accent-light: #7DD3FC;
+  --color-accent-pale:  rgba(56,189,248,0.12);
+}
+
+/* ── 5. Hero — 升级 accent + 聚光灯 ── */
+.hero {
+  --color-accent:      #38BDF8;
+  --color-accent-rgb:  56, 189, 248;
+  --color-accent-light:#7DD3FC;
+  --color-accent-pale: rgba(56,189,248,0.12);
+}
+.hero::after {
+  background: radial-gradient(
+    900px circle at var(--mx) var(--my),
+    rgba(56,189,248,0.09),
+    transparent 60%
+  );
+}
+.hero .btn-primary {
+  background: #38BDF8;
+  border-color: #38BDF8;
+  color: #080E1A;
+}
+.hero .btn-primary:hover {
+  background: #7DD3FC;
+  border-color: #7DD3FC;
+  color: #080E1A;
+}
+.hero .btn-outline {
+  color: rgba(241,245,249,0.72);
+  border-color: rgba(241,245,249,0.22);
+}
+.hero .btn-outline:hover {
+  border-color: #38BDF8;
+  color: #38BDF8;
+}
+.hero-name-en { color: rgba(241,245,249,0.96); }
+.hero-name-zh { color: rgba(241,245,249,0.32); }
+.hero-tagline { color: rgba(241,245,249,0.68); }
+.hero-sub     { color: rgba(241,245,249,0.34); }
+.hero-scroll      { color: rgba(241,245,249,0.2); }
+.hero-scroll-line { background: rgba(241,245,249,0.1); }
+
+/* ── 6. Nav — 统一深色适配 ── */
+.nav:not(.scrolled) .nav-brand          { color: rgba(241,245,249,0.88); }
+.nav:not(.scrolled) .nav-link           { color: rgba(241,245,249,0.38); }
+.nav:not(.scrolled) .nav-link:hover     { color: rgba(241,245,249,0.88); }
+.nav:not(.scrolled) .nav-link.active    { color: #38BDF8; }
+.nav:not(.scrolled) .nav-hamburger span { background: rgba(241,245,249,0.72); }
+
+/* ── 7. 所有卡片 → 磨砂玻璃统一风格 ── */
+.exp-card,
+.method-step,
+.kn-source-card {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+  backdrop-filter: blur(4px);
+}
+.exp-card:hover,
+.method-step:hover,
+.kn-source-card:hover {
+  background: rgba(56,189,248,0.06);
+  border-color: rgba(56,189,248,0.28);
+  box-shadow: 0 8px 32px rgba(56,189,248,0.12);
+}
+
+/* About 卡片 */
+.about .info-card,
+.about .about-tag {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+}
+
+/* Certs 磨砂 */
+.cert-item {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.07);
+}
+.cert-item:hover {
+  border-color: rgba(56,189,248,0.3);
+  box-shadow: 0 8px 24px rgba(56,189,248,0.1);
+}
+
+/* AI 工作流节点 */
+.ai-step {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+}
+.ai-step:hover {
+  border-color: rgba(56,189,248,0.28);
+  background: rgba(56,189,248,0.06);
+}
+
+/* ── 8. Contact 修复 ── */
+.contact {
+  background: #050A14;
+  color: #F1F5F9;
+}
+.contact .contact-title { color: #F1F5F9; }
+.contact .contact-sub   { color: rgba(241,245,249,0.48); }
+.contact .contact-wechat,
+.contact .contact-email {
+  color: rgba(241,245,249,0.72);
+  border-color: rgba(255,255,255,0.12);
+}
+.contact .contact-wechat:hover,
+.contact .contact-email:hover {
+  border-color: #38BDF8;
+  color: #38BDF8;
+}
+
+/* ── 9. Footer 修复 ── */
+.footer {
+  background: #050A14;
+  border-top-color: rgba(255,255,255,0.06);
+}
+
+/* ── 10. Why Me 表头修复 ── */
+.why-table-header {
+  background: #0D1525;
+}
+.why-table-header .why-col--me {
+  background: rgba(56,189,248,0.15);
+}
+
+/* ── 11. 装饰字 + 对角线全部隐藏 ── */
+.about::before, .skills::before, .ai-power::before,
+.experience::before, .certs::before, .method::before,
+.knowledge::before, .why-me::before {
+  display: none;
+}
+.about::after, .experience::after, .knowledge::after {
+  display: none;
+}
+
+/* ── 12. 全站按钮统一 ── */
+.btn-primary {
+  background: #38BDF8;
+  border-color: #38BDF8;
+  color: #080E1A;
+}
+.btn-primary:hover {
+  background: #7DD3FC;
+  border-color: #7DD3FC;
+  color: #080E1A;
+}
+.btn-outline {
+  color: #38BDF8;
+  border-color: rgba(56,189,248,0.4);
+}
+.btn-outline:hover {
+  background: rgba(56,189,248,0.1);
+  border-color: #38BDF8;
 }
