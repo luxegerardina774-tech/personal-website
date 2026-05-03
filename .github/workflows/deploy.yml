@@ -29,6 +29,4 @@ jobs:
         run: |
           ./ossutil sync ./ oss://${{ secrets.OSS_BUCKET }}/ \
             --delete \
-            --exclude ".git/*" \
-            --exclude ".github/*" \
             -f
